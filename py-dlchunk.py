@@ -3,10 +3,12 @@ from pprint import pprint
 import os.path
 import os
 
-r=requests.get("https://github.com/braoru/Kibana/archive/master.zip",stream=True)
+r=requests.get("https://github.com/braoru/Kibana/archive/master.zip",
+	headers={'Range': 'bytes=4000-8000'}, stream=True)
 
-open('master.zip',mode='wb').write(r.content)
-pprint(int(r.headers['Content-Length']))
+size=int(r.headers['Content-Length'])
+
+pprint(size)
 
 i=1
 
