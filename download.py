@@ -36,7 +36,7 @@ def file_lsize(path):
 	return(os.path.getsize(path))
 
 
-r=requests.get(url)
+r=requests.get(url,stream=True)
 path=url_filename(url)
 
 dsize=file_dsize(r.headers)
